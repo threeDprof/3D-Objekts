@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Objekts Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    model-viewer {
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      margin: 0 auto 30px auto;
+      background: #000;
+      border-radius: 10px;
+    }
+
+    .gallery-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+    }
+
+    .thumbnail-row {
+      display: flex;
+      overflow: hidden;
+      gap: 10px;
+      max-width: 600px;
+    }
+
+    .thumbnail-row img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .thumbnail-row img:hover {
+      border-color: orange;
+    }
+
+    .nav-button {
+      background-color: orange;
+      border: none;
+      color: black;
+      padding: 10px 15px;
+      font-size: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .nav-button:disabled {
+      background-color: #444;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 700px) {
+      model-viewer {
+        height: 350px;
+      }
+
+      .thumbnail-row img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>3D Objekts by Alex Boots</h1>
+
+  <model-viewer id="viewer"
+    src="models/model1.gltf"
+    alt="3D model"
+    auto-rotate
+    camera-controls
+    background-color="#fff">
+  </model-viewer>
+
+  <div class="gallery-container">
+    <button class="nav-button" onclick="prevPage()" id="prevBtn">&larr;</button>
+
+    <div class="thumbnail-row" id="thumbnailRow">
+      <!-- Thumbnails wi
